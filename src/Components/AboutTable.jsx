@@ -21,7 +21,15 @@ const rows = [
 
 export default function AboutTable() {
   return (
-    <TableContainer component={Paper} sx={{ background: "#34495E" }}>
+    <TableContainer
+      component={Paper}
+      sx={{
+        background: "#34495E",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
+      }}
+    >
       <Table size="small" aria-label="a dense table">
         <TableBody>
           {rows.map((row) => (
@@ -31,8 +39,6 @@ export default function AboutTable() {
               sx={{
                 // border: 0,
                 borderColor: " lighten(#34495E, 10%)",
-                "&:nth-of-type(odd)": { transform: "rotate(-2deg)" },
-                "&:nth-of-type(even)": { transform: "rotate(-2deg)" },
               }}
             >
               <TableCell
@@ -53,9 +59,6 @@ export default function AboutTable() {
               >
                 {row.value}
               </TableCell>
-              {/* <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell> */}
             </TableRow>
           ))}
         </TableBody>

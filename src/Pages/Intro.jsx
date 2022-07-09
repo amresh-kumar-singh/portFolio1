@@ -1,9 +1,10 @@
-import { Container, Divider, Typography } from "@mui/material";
+import { Box, Container, Divider, Typography } from "@mui/material";
+import Circle from "../Components/Circle";
 
 const Intro = () => {
   return (
     <Container
-      maxWidth="md"
+      maxWidth="xl"
       id="intro"
       sx={{
         color: "white",
@@ -12,18 +13,43 @@ const Intro = () => {
         height: "100vh",
       }}
     >
-      <Typography variant="h2" sx={{ flex: 1 }}>
-        Left
-      </Typography>{" "}
-      <Divider
+      <Box
+        variant="h2"
+        sx={{
+          flex: 3,
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Circle />
+      </Box>
+      {/* <Divider
         orientation="vertical"
         flexItem
         variant="middle"
         sx={{ color: "white", border: "8px solid" }}
-      />
-      <Typography variant="h2" sx={{ flex: 1 }}>
-        RIght
-      </Typography>
+      /> */}
+      <Box flex={2}>
+        <Typography textAlign="left" variant="h2" sx={{ display: "block" }}>
+          Hi,
+        </Typography>
+        <Typography textAlign="left" variant="h2" sx={{}}>
+          I'm Amresh Kumar,
+        </Typography>
+        <Typography
+          textAlign="left"
+          variant="h3"
+          sx={{
+            background: "linear-gradient(#b88746, #fdf5a6)",
+            backgroundClip: "text",
+            textFillColor: "transparent",
+          }}
+        >
+          A Full-Stack Developer
+        </Typography>
+      </Box>
     </Container>
   );
 };
