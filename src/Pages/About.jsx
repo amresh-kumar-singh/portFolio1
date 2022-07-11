@@ -1,4 +1,5 @@
-import { Box, Stack, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import AboutTable from "../Components/AboutTable";
 import MyContainer from "../Components/MyContainer";
 import Social from "../Components/Social";
@@ -10,8 +11,8 @@ const About = ({ myClass }) => {
       position="relative"
       height="100vh"
       display="flex"
-      alignItems="center"
-      // justifyContent="center"
+      alignItems={{ xs: "end", sm: "center" }}
+      justifyContent="center"
       id="AboutMe"
     >
       <Typography className="title" variant="h2" sx={{ flex: 1 }}>
@@ -20,16 +21,15 @@ const About = ({ myClass }) => {
 
       <MyContainer
         maxWidth="md"
+        className="about-me-container"
         sx={{
-          height: { xs: "100%", sm: "70%" },
+          height: { xs: "92%", sm: "70%" },
           background: "white",
           boxSizing: "border-box",
           padding: "0 !important",
           flexDirection: { xs: "column", sm: "row" },
-          clipPath: {
-            xs: "polygon(0 8%, 100% 8%, 100% 100%, 0 100%);",
-            sm: "none",
-          },
+          margin: { xs: "5px", sm: "inherit" },
+          borderRadius: "6px",
         }}
       >
         <Box
@@ -42,16 +42,19 @@ const About = ({ myClass }) => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            borderRadius: "6px",
+            borderTopLeftRadius: "6px",
+            borderTopRightRadius: { xs: "6px", sm: "0" },
+            borderBottomLeftRadius: { xs: "0", sm: "6px" },
           }}
         >
           <Typography
             variant="body1"
+            className="about-me-para"
             sx={{
               padding: "20px 40px",
               fontSize: { sm: "1.5rem", xs: "1.25rem", textAlign: "justify" },
               lineHeight: { sm: "2rem", xs: "1.75rem" },
-              paddingTop: { xs: "12%", sm: "0" },
+              // paddingTop: { xs: "12%", sm: "0" },
               paddingRight: "60px",
             }}
           >
@@ -71,6 +74,8 @@ const About = ({ myClass }) => {
             color: "black",
             position: "relative",
             width: { xs: "100%", sm: "auto" },
+            borderBottomLeftRadius: { xs: "6px", sm: "0" },
+            borderBottomRightRadius: { xs: "6px", sm: "0" },
           }}
         >
           <Box
@@ -82,6 +87,7 @@ const About = ({ myClass }) => {
             <Social />
           </Box>
           <Box
+            className="mq410"
             width={{ xs: "80%", sm: "100%" }}
             marginLeft={{ xs: "10%", sm: "initial" }}
             height="50%"

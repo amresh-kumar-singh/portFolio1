@@ -1,4 +1,5 @@
-import { Box, Container, Divider, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import MyContainer from "../Components/MyContainer";
 import ProjectCards from "../Components/ProjectCards";
 

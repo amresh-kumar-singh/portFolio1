@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import { useCallback, useEffect, useRef, useState } from "react";
 import circularData from "../Data/circularData";
 import "./circle.css";
@@ -35,6 +35,7 @@ const Circle = () => {
       setPos(150);
     }
   };
+  // eslint-disable-next-line
   const optimaizedFunction = useCallback(debounce(Resize), []);
   const animation = () => {
     setRotate((prev) => {
@@ -56,10 +57,12 @@ const Circle = () => {
     return () => {
       clearInterval(timerRef.current);
     };
+    // eslint-disable-next-line
   }, []);
   useEffect(() => {
     window.addEventListener("resize", optimaizedFunction);
     return () => window.removeEventListener("resize", optimaizedFunction);
+    // eslint-disable-next-line
   }, []);
   // useEffect(() => {
   //   if (rotate === -360) ref.current.style.transform = "rotate(0deg)";

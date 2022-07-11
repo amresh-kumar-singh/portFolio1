@@ -20,7 +20,7 @@ html {
   transform-origin: bottom left;
   transform: rotate(90deg) translate(-50%, -50%);
   color: white;
-  z-index: 2;
+  z-index: 5;
 }
 .scroll-top {
   position: fixed !important;
@@ -101,6 +101,28 @@ button:disabled {
     content: none;
   }
 }
+
+@media (max-width: 900px) {
+  .title {
+    font-size: 2.75rem !important;
+  }
+}
+@media (max-width: 600px) {
+  .title {
+    font-size: 2rem !important;
+    z-index: 5;
+  }
+  .box:after {
+    content: none;
+  }
+  .next:after {
+    content: none;
+  }
+  #Skills {
+    margin-top: 8% !important;
+  }
+}
+
 @media (max-height: 480px) {
   #SayHi {
     height: 100%;
@@ -123,22 +145,44 @@ button:disabled {
   .box:after {
     content: none;
   }
-}
-
-@media (max-width: 900px) {
-  .title {
-    font-size: 2.75rem !important;
+  .tilt::after {
+    border-bottom: 87vh solid #34495e;
   }
-}
-@media (max-width: 600px) {
+  #AboutMe {
+    align-items: flex-end;
+  }
+  .about-me-container {
+    height: 87% !important;
+  }
   .title {
     font-size: 2rem !important;
-    z-index: 5;
+  }
+  td {
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+  }
+  th {
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+  }
+  .about-me-para {
+    font-size: 1.25rem !important;
+    line-height: 1.75rem !important;
+  }
+  #Skills {
+    height: auto;
+  }
+  .Skill-wrapper {
+    min-height: 100vh;
+    height: auto !important;
+  }
+  .cardSkill {
+    max-height: 280px;
+    min-width: 225px;
+    padding-top: 5px !important;
+    margin-top: 10%;
+  }
+  .cardSkill div {
+    padding-top: 0px !important;
   }
 }
-
-/* @media (min-width: 0px) and (orientation: landscape) {
-  :root {
-    scroll-padding-top: 50px;
-  }
-} */

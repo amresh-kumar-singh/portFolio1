@@ -1,9 +1,8 @@
 .gate {
   display: inline-block;
   width: inherit;
+  width: stretch;
   width: -moz-available;
-  width: -webkit-fill-available;
-  width: fill-available;
   padding: 10px 0 10px 15px;
   font-family: "Open Sans", sans;
   font-weight: 400;
@@ -168,7 +167,7 @@ textarea:focus {
   }
   .hire-me h4,
   h6 {
-    width: fill-available !important;
+    width: stretch !important;
   }
   .say-hi-card1 {
     width: 100% !important;

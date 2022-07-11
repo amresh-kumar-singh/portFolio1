@@ -1,4 +1,5 @@
-import { Box, Slide, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import Card from "../Components/Card";
 import MyContainer from "../Components/MyContainer";
@@ -32,10 +33,9 @@ const Skills = ({ myClass }) => {
   // };
   return (
     <Box
-      className={myClass}
-      height="100vh"
+      className={myClass + " Skill-wrapper"}
+      height={{ xs: "auto", sm: "100vh" }}
       position="relative"
-      sx={{ height: { xs: "auto", sm: "100vh" } }}
     >
       <Typography className="title" variant="h2" sx={{ flex: 1 }}>
         Skills

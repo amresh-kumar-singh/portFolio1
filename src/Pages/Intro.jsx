@@ -28,12 +28,6 @@ const Intro = () => {
       >
         <Circle />
       </Box>
-      {/* <Divider
-        orientation="vertical"
-        flexItem
-        variant="middle"
-        sx={{ color: "white", border: "8px solid" }}
-      /> */}
       <Box sx={{ flex: { xs: 1, sm: 2 } }}>
         <Typography
           textAlign="left"
