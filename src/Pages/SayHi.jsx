@@ -77,11 +77,15 @@ const SayHi = ({ myClass }) => {
         maxWidth="md"
         id="SayHi"
         sx={{
-          background: "rgba(255,255,255,0.7)",
-          height: "80%",
+          background: {
+            xs: "rgba(255,255,255,0.5)",
+            sm: "rgba(255,255,255,0.7)",
+          },
+          height: { xs: "100%", sm: "75%" },
         }}
       >
         <Stack
+          className="say-hi-card1 pb10"
           width="30%"
           height="50%"
           justifyContent="center"
@@ -100,6 +104,7 @@ const SayHi = ({ myClass }) => {
             }}
           >
             <CardContent
+              className="hire-me"
               sx={{
                 display: "flex",
                 alignItems: "center",
@@ -108,21 +113,26 @@ const SayHi = ({ myClass }) => {
                 height: "80%",
               }}
             >
-              <Typography variant="h4">Hire Me</Typography>
+              <Typography
+                variant="h4"
+                sx={{ fontSize: { md: "2.15rem", xs: "1.75rem" } }}
+              >
+                Hire Me
+              </Typography>
               <Typography variant="caption">or</Typography>
               <Typography variant="subtitle1" width="auto">
                 Just say Hi
               </Typography>
             </CardContent>
-            <CardActions>Thank You</CardActions>
+            <CardActions className="thank-you">Thank You</CardActions>
           </Card>
         </Stack>
-        <Stack width="70%" spacing={4}>
+        <Stack className="say-hi-card2" width="70%" spacing={{ xs: 2, sm: 4 }}>
           <Stack
             spacing={2}
-            sx={{ flex: 1, marginRight: "2%" }}
-            direction="row"
-            justifyContent="space-between"
+            sx={{ flex: 1 }}
+            direction={{ xs: "column", sm: "row" }}
+            justifyContent={{ xs: "center", sm: "space-between" }}
           >
             <Input
               value={data.name}
@@ -136,16 +146,20 @@ const SayHi = ({ myClass }) => {
               value={data.phone}
               type="tel"
               label="Mobile No."
-              placeholder="Enter Mobile/Phone no"
+              placeholder="Enter Mobile/Phone No"
               handleChange={handlePhone}
             />
           </Stack>
 
           <Stack
             spacing={2}
-            sx={{ flex: 1, marginRight: "2%" }}
-            direction="row"
-            justifyContent="space-between"
+            className="input2"
+            sx={{
+              flex: 1,
+              marginRight: "2%",
+            }}
+            direction={{ xs: "column", sm: "row" }}
+            justifyContent={{ xs: "center", sm: "space-between" }}
           >
             <Input
               type="email"
@@ -163,7 +177,7 @@ const SayHi = ({ myClass }) => {
               handleChange={handleCompany}
             />
           </Stack>
-          <Stack sx={{ flex: 1, marginLeft: "2%" }}>
+          <Stack sx={{ flex: 1, marginLeft: "2%" }} className="input2">
             <TextareaAutosize
               aria-label="Message textarea"
               minRows={5}
@@ -176,6 +190,7 @@ const SayHi = ({ myClass }) => {
           </Stack>
           <Button
             variant="contained"
+            className="input2"
             sx={{
               backgroundImage: "linear-gradient(#8614f8 0, #760be0 100%)",
               color: "white",

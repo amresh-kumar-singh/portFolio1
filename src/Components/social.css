@@ -1,19 +1,17 @@
-ul {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.social {
   display: flex;
+  height: 100%;
+  align-items: center;
   margin: 0;
   padding: 0;
 }
 
-ul li {
+.social li {
   list-style: none;
   margin: 0 25px;
 }
 
-ul li a .fa {
+.social li a .fa {
   font-size: 40px;
   color: #262626;
   /* line-height: 80px; */
@@ -21,7 +19,7 @@ ul li a .fa {
   /* padding-right: 14px; */
 }
 
-ul li a span {
+.social li a span {
   padding: 0;
   margin: 0;
   position: absolute;
@@ -30,7 +28,7 @@ ul li a span {
   transition: 0.5s;
 }
 
-ul li a {
+.social li a {
   text-decoration: none;
   display: absolute;
   display: block;
@@ -46,7 +44,7 @@ ul li a {
   align-items: center;
   justify-content: center;
 }
-ul li a:before {
+.social li a:before {
   content: "";
   position: absolute;
   top: 10px;
@@ -57,7 +55,7 @@ ul li a:before {
   transform: 0.5s;
   transform: rotate(0deg) skewY(-45deg);
 }
-ul li a:after {
+.social li a:after {
   content: "";
   position: absolute;
   bottom: -20px;
@@ -69,12 +67,12 @@ ul li a:after {
   transform: rotate(0deg) skewX(-45deg);
 }
 
-ul li a:hover {
+.social li a:hover {
   transform: rotate(-30deg) skew(25deg) translate(20px, -15px);
   box-shadow: -50px 50px 50px rgba(0, 0, 0, 0.5);
 }
 
-ul li:hover .fa {
+.social li:hover .fa {
   color: #fff;
 }
 
@@ -120,4 +118,36 @@ ul li:hover:nth-child(4) a:before {
 }
 ul li:hover:nth-child(4) a:after {
   background: #3d4043;
+}
+
+@media screen and (max-width: 900px) {
+  .social {
+    flex-wrap: wrap;
+  }
+  .social li {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex: 50%;
+  }
+}
+@media screen and (max-width: 800px) {
+  td {
+    font-size: 1.1rem !important;
+    line-height: 1 !important;
+    padding-left: 6px !important;
+  }
+  th {
+    font-size: 1rem !important;
+    line-height: 1 !important;
+    /* padding-right: 6px !important; */
+    padding: 6px 0px !important;
+
+    font-weight: 500 !important;
+  }
+}
+@media screen and (max-width: 600px) {
+  .social {
+    /* flex-wrap: nowrap; */
+  }
 }

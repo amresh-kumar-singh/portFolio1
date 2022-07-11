@@ -9,9 +9,12 @@ export default function MyCard({ logo, header, content, setHover, hover }) {
     <Card
       className="cardSkill"
       sx={{
-        maxWidth: 345,
+        // maxWidth: 345,
+        maxWidth: 280,
         width: "30%",
+        minWidth: "240px",
         paddingTop: "16px",
+        flex: { xs: "50%", md: "inherit" },
         // boxShadow: "rgb(38, 57, 77) 0px 20px 30px -10px",
         // opacity: hover && "0.3",
         filter: hover && "blur(5px) brightness(0.5) saturate(0)",

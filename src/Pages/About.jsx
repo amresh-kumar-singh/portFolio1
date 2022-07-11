@@ -1,4 +1,4 @@
-import { Box, Paper, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import AboutTable from "../Components/AboutTable";
 import MyContainer from "../Components/MyContainer";
 import Social from "../Components/Social";
@@ -7,8 +7,8 @@ const About = ({ myClass }) => {
   return (
     <Box
       className={myClass}
-      height="100vh"
       position="relative"
+      height="100vh"
       display="flex"
       alignItems="center"
       // justifyContent="center"
@@ -21,20 +21,20 @@ const About = ({ myClass }) => {
       <MyContainer
         maxWidth="md"
         sx={{
-          height: "70%",
+          height: { xs: "100%", sm: "70%" },
           background: "white",
           boxSizing: "border-box",
-          // border: "15px solid  #f13050",#ebb9bb --#d16d8b
-          // borderStyle: "outset",
           padding: "0 !important",
-          border: "8px dashed #ebb9bb", //3CB371
-          boxShadow:
-            "0 0 0 7.5px #d16d8b, 0 0 0 37.5px #fff, inset 0 0 0 7.5px #d16d8b, 0 15px 30px 45px rgb(0 0 0 / 50%), inset 0 0 0 18px #fff, inset 0 0 100vw 100vw beige",
+          flexDirection: { xs: "column", sm: "row" },
+          clipPath: {
+            xs: "polygon(0 8%, 100% 8%, 100% 100%, 0 100%);",
+            sm: "none",
+          },
         }}
       >
         <Box
           height="100%"
-          flex={1}
+          flex={{ xs: 3, sm: 1 }}
           sx={{
             background: "white",
             color: "black",
@@ -42,31 +42,54 @@ const About = ({ myClass }) => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
+            borderRadius: "6px",
           }}
         >
-          Introduction
-          <Stack
+          <Typography
+            variant="body1"
             sx={{
               padding: "20px 40px",
-              fontSize: { md: "1.5rem", sm: "1rem", textAlign: "justify" },
+              fontSize: { sm: "1.5rem", xs: "1.25rem", textAlign: "justify" },
+              lineHeight: { sm: "2rem", xs: "1.75rem" },
+              paddingTop: { xs: "12%", sm: "0" },
+              paddingRight: "60px",
             }}
           >
             Hi, I am Amresh Kumar, a javascript developer. I can work on
             technologies like HTML, CSS, Javascript, NodeJs, React Js, MongoDB,
             etc. A B.E. graduate in C.S.E. Currently living in Banglore and I am
             from Bihar.
-          </Stack>
+          </Typography>
         </Box>
 
         <Box
+          className="tilt"
           height="100%"
-          flex={1}
-          sx={{ background: "white", color: "black" }}
+          flex={{ xs: 4, sm: 1 }}
+          sx={{
+            background: { xs: "#34495e", sm: "white" },
+            color: "black",
+            position: "relative",
+            width: { xs: "100%", sm: "auto" },
+          }}
         >
-          <Box width="100%" height="50%" position="relative">
+          <Box
+            width="100%"
+            height={{ xs: "44%", sm: "50%" }}
+            position="relative"
+            zIndex="5"
+          >
             <Social />
           </Box>
-          <Box width="100%" height="50%" display="flex" alignItems="center">
+          <Box
+            width={{ xs: "80%", sm: "100%" }}
+            marginLeft={{ xs: "10%", sm: "initial" }}
+            height="50%"
+            display="flex"
+            alignItems="center"
+            position="relative"
+            zIndex="5"
+          >
             <AboutTable />
           </Box>
         </Box>

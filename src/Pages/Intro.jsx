@@ -1,4 +1,6 @@
-import { Box, Container, Divider, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
 import Circle from "../Components/Circle";
 
 const Intro = () => {
@@ -11,12 +13,13 @@ const Intro = () => {
         display: "flex",
         alignItems: "center",
         height: "100vh",
+        flexDirection: { xs: "column", sm: "row" },
       }}
     >
       <Box
         variant="h2"
         sx={{
-          flex: 3,
+          flex: { xs: 4, sm: 3 },
           height: "100%",
           display: "flex",
           alignItems: "center",
@@ -31,11 +34,22 @@ const Intro = () => {
         variant="middle"
         sx={{ color: "white", border: "8px solid" }}
       /> */}
-      <Box flex={2}>
-        <Typography textAlign="left" variant="h2" sx={{ display: "block" }}>
+      <Box sx={{ flex: { xs: 1, sm: 2 } }}>
+        <Typography
+          textAlign="left"
+          variant="h2"
+          sx={{
+            display: "block",
+            fontSize: { xs: "1.75rem", md: "2.75rem", lg: "3.75rem" },
+          }}
+        >
           Hi,
         </Typography>
-        <Typography textAlign="left" variant="h2" sx={{}}>
+        <Typography
+          textAlign="left"
+          variant="h2"
+          sx={{ fontSize: { xs: "1.75rem", md: "2.25rem", lg: "3.25rem" } }}
+        >
           I'm Amresh Kumar,
         </Typography>
         <Typography
@@ -45,6 +59,7 @@ const Intro = () => {
             background: "linear-gradient(#b88746, #fdf5a6)",
             backgroundClip: "text",
             textFillColor: "transparent",
+            fontSize: { xs: "1rem", md: "2rem", lg: "2.5rem" },
           }}
         >
           A Full-Stack Developer

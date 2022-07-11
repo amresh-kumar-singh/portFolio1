@@ -1,7 +1,9 @@
 .gate {
   display: inline-block;
-  width: 100%;
-  /* width: 215px; */
+  width: inherit;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  width: fill-available;
   padding: 10px 0 10px 15px;
   font-family: "Open Sans", sans;
   font-weight: 400;
@@ -22,7 +24,8 @@
 }
 span {
   position: relative;
-  width: 45%;
+  /* width: 45%; this one changed recently */
+  width: 85%;
 }
 .gate + label {
   display: inline-block;
@@ -103,14 +106,16 @@ textarea {
   transform-origin: center;
   transform: perspective(800px) rotateY(20deg);
   transition: 0.5s;
+  margin: "10px";
 }
 .cardSkill:hover {
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
-  transform: scale(1.01);
+  /* transform: scale(1.01); */
   transform: perspective(800px) rotateY(0deg) scale(1.21);
   opacity: 1;
   transition: 0.5s;
   filter: none;
+  z-index: 5;
 }
 
 textarea::placeholder {
@@ -127,4 +132,60 @@ textarea:focus {
   background: #fff;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
+}
+@media (max-width: 600px) {
+  .cardSkill {
+    transform: perspective(800px) rotateY(0deg);
+    margin: 25px;
+  }
+  .say-hi-card2 {
+    width: 100% !important;
+  }
+  span {
+    width: 100%;
+  }
+}
+@media (max-width: 800px) {
+  #SayHi {
+    flex-direction: column;
+    justify-content: center !important;
+  }
+  .say-hi-card1 > div {
+    width: 90% !important;
+  }
+  .thank-you {
+    justify-content: end;
+    width: inherit;
+    padding-top: 0 !important;
+  }
+  .hire-me {
+    width: 80%;
+    flex-direction: row !important;
+    padding-bottom: 0 !important;
+  }
+  .hire-me span {
+    width: 0;
+  }
+  .hire-me h4,
+  h6 {
+    width: fill-available !important;
+  }
+  .say-hi-card1 {
+    width: 100% !important;
+    height: 20% !important;
+    padding-bottom: 30px !important;
+  }
+  .say-hi-card2 {
+    width: 90% !important;
+  }
+}
+@media only screen and (max-width: 920px) {
+  .cardSkill:hover {
+    transform: perspective(800px) rotateY(0deg) scale(1.1);
+  }
+}
+@media (max-height: 480px) {
+  .pb10 {
+    padding-bottom: 10px !important;
+  }
 }

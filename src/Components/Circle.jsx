@@ -1,11 +1,41 @@
 import { Typography } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import circularData from "../Data/circularData";
 import "./circle.css";
+
 const Circle = () => {
   const [rotate, setRotate] = useState(-60);
+  const [pos, setPos] = useState(261);
   const timerRef = useRef();
   const ref = useRef();
+  const debounce = (func) => {
+    let timer;
+    return function (...args) {
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => {
+        timer = null;
+        func.apply(this, args);
+      }, 500);
+    };
+  };
+  const Resize = () => {
+    if (window.innerWidth < 1024) {
+      setPos(225);
+    }
+    if (window.innerWidth > 1024) {
+      setPos(261);
+    }
+    if (window.innerWidth < 770) {
+      setPos(200);
+    }
+    if (window.innerWidth < 720) {
+      setPos(180);
+    }
+    if (window.innerWidth < 550) {
+      setPos(150);
+    }
+  };
+  const optimaizedFunction = useCallback(debounce(Resize), []);
   const animation = () => {
     setRotate((prev) => {
       if (prev === -360) {
@@ -21,10 +51,15 @@ const Circle = () => {
     });
   };
   useEffect(() => {
+    Resize();
     timerRef.current = setInterval(animation, 2000);
     return () => {
       clearInterval(timerRef.current);
     };
+  }, []);
+  useEffect(() => {
+    window.addEventListener("resize", optimaizedFunction);
+    return () => window.removeEventListener("resize", optimaizedFunction);
   }, []);
   // useEffect(() => {
   //   if (rotate === -360) ref.current.style.transform = "rotate(0deg)";
@@ -36,37 +71,23 @@ const Circle = () => {
         ref={ref}
         style={{
           transitionDuration: "700ms",
-          height: "522px",
-          width: "522px",
+          height: `${pos * 2}px`,
+          width: `${pos * 2}px`,
           marginTop: " 39px",
         }}
       >
         {circularData.map((data, i) => {
           return (
             <div
-              className="item"
+              className={`item ${Math.abs(rotate) === i * 60 ? "active" : ""}`}
               key={data.item}
               style={{
                 transform: `translate(${
-                  261 * Math.sin(i * 60 * (Math.PI / 180))
-                }px, ${-261 * Math.cos(i * 60 * (Math.PI / 180))}px) rotate(${
+                  pos * Math.sin(i * 60 * (Math.PI / 180))
+                }px, ${-pos * Math.cos(i * 60 * (Math.PI / 180))}px) rotate(${
                   i * 60
                 }deg)`,
                 backgroundImage: `url(Icons/${data.image}.svg)`,
-                backgroundRepeat: "round",
-                backgroundSize: "cover",
-                cursor: "pointer",
-                ...(Math.abs(rotate) === i * 60
-                  ? {
-                      height: "90px",
-                      width: "90px",
-                      filter: "brightness(100%)",
-                    }
-                  : {
-                      height: "78px",
-                      width: "78px",
-                      filter: "brightness(80%)",
-                    }),
               }}
               onMouseOver={() => clearInterval(timerRef.current)}
               onClick={() => {
@@ -89,6 +110,7 @@ const Circle = () => {
           gutterBottom
           sx={{
             color: "#fdf5a6",
+            fontSize: { xs: "1.5rem", md: "1.75rem", lg: "2.25rem" },
           }}
         >
           {
@@ -105,12 +127,14 @@ const Circle = () => {
           sx={{
             letterSpacing: "0.06",
             position: "relative",
+            lineHeight: { xs: "1.1", sm: "1.25", md: "1.5" },
+            fontSize: { xs: "0.90rem", sm: "1rem", md: "1.1rem" },
             "&:after": {
               content: "'\\201C'",
               position: "absolute",
-              left: "-24px",
-              top: "-20px",
-              fontSize: "52px",
+              left: { xs: "-21px", sm: "-24px" },
+              top: { xs: "-10px", sm: "-20px" },
+              fontSize: { xs: "45px", sm: "52px" },
             },
           }}
         >

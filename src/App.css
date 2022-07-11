@@ -29,6 +29,15 @@ html {
   z-index: 3;
   transform: translate(-50%, -50%);
 }
+.tilt::after {
+  content: " ";
+  border-bottom: 70vh solid #34495e;
+  border-left: 6vw solid transparent;
+  position: absolute;
+  top: 0;
+  width: 97%;
+  right: 0;
+}
 h2 {
   font-size: 72px;
   background: -webkit-linear-gradient(#b88746, #fdf5a6);
@@ -80,13 +89,55 @@ button:disabled {
   background-color: rgba(134, 20, 248, 0.6) !important;
   color: rgba(255, 255, 255, 0.8) !important;
 }
-/* @media (min-width: 600px) {
-  :root {
-    scroll-padding-top: 66px;
+@media (max-width: 1172px) {
+  .title {
+    transform: rotate(0deg);
+    top: auto;
+    bottom: 0%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .tilt::after {
+    content: none;
+  }
+}
+@media (max-height: 480px) {
+  #SayHi {
+    height: 100%;
+  }
+  #intro {
+    height: auto;
+  }
+  .input2 {
+    margin-top: 10px !important;
+  }
+  .next {
+    height: auto;
+  }
+  .box {
+    height: auto;
+  }
+  .next:after {
+    content: none;
+  }
+  .box:after {
+    content: none;
   }
 }
 
-@media (min-width: 0px) and (orientation: landscape) {
+@media (max-width: 900px) {
+  .title {
+    font-size: 2.75rem !important;
+  }
+}
+@media (max-width: 600px) {
+  .title {
+    font-size: 2rem !important;
+    z-index: 5;
+  }
+}
+
+/* @media (min-width: 0px) and (orientation: landscape) {
   :root {
     scroll-padding-top: 50px;
   }

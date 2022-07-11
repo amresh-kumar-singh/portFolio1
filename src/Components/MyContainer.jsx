@@ -10,4 +10,5 @@ const MyContainer = styled(Container)`
   color: white;
   z-index: 2;
 `;
+
 export default MyContainer;

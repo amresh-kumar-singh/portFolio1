@@ -2,7 +2,7 @@ import "./social.css";
 
 const Social = () => {
   return (
-    <ul>
+    <ul className="social">
       <li>
         <a href="#">
           <i class="fa fa-facebook" aria-hidden="true"></i>

@@ -31,11 +31,24 @@ const Skills = ({ myClass }) => {
   //   setHover(true);
   // };
   return (
-    <Box className={myClass} height="100vh" position="relative">
+    <Box
+      className={myClass}
+      height="100vh"
+      position="relative"
+      sx={{ height: { xs: "auto", sm: "100vh" } }}
+    >
       <Typography className="title" variant="h2" sx={{ flex: 1 }}>
         Skills
       </Typography>
-      <MyContainer maxWidth="md" id="Skills">
+      <MyContainer
+        maxWidth="md"
+        id="Skills"
+        sx={{
+          flexWrap: { xs: "wrap", md: "nowrap" },
+          justifyContent: { xs: "center", md: "space-between" },
+          height: { xs: "auto", sm: "100vh" },
+        }}
+      >
         {data.map((skill, i) => {
           return (
             <Card

@@ -11,28 +11,20 @@ import Button from "@mui/material/Button";
 import DownloadTwoToneIcon from "@mui/icons-material/DownloadTwoTone";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import { Link } from "@mui/material";
+import Link from "@mui/material/Link";
+import CloseIcon from "@mui/icons-material/Close";
 
 const pages = ["About Me", "Skills", "Projects", "Say Hi"];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
   };
 
   return (
@@ -84,11 +76,44 @@ const Navbar = () => {
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: "block", md: "none" },
+                "& .MuiPaper-root": {
+                  width: "100vw !important",
+                  height: "100vh !important",
+                  background: "rgba(0, 140, 230, 0.8)",
+                  position: "relative",
+                  display: "flex",
+                  alignItems: "center",
+                },
+                "& .MuiList-root": {
+                  flexDirection: "column",
+                  alignItems: "center",
+                  height: "60%",
+                  width: "100%",
+                  display: "flex",
+                  color: "white",
+                  justifyContent: "space-around",
+                },
+                "& .MuiTypography-root": {
+                  fontSize: "2rem",
+                },
               }}
             >
+              <IconButton
+                sx={{ position: "absolute", top: "-25%", right: "5%" }}
+                onClick={() => handleCloseNavMenu()}
+              >
+                <CloseIcon sx={{ color: "white", fontSize: "4rem" }} />
+              </IconButton>
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography
+                    textAlign="center"
+                    component="a"
+                    href={`#${page.replace(" ", "")}`}
+                    sx={{ textDecoration: "none", color: "white" }}
+                  >
+                    {page}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -97,16 +122,18 @@ const Navbar = () => {
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="#intro"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "'Great Vibes', cursive",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
+              fontWeight: 600,
+              letterSpacing: ".1rem",
               color: "inherit",
               textDecoration: "none",
+              margin: "0",
+              fontSize: "1.25rem",
             }}
           >
             Amresh Kumar
@@ -171,28 +198,6 @@ const Navbar = () => {
                 Resume
               </Button>
             </Tooltip>
-            {/* <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu> */}
           </Box>
         </Toolbar>
       </Container>

@@ -24,23 +24,17 @@ export default function AboutTable() {
     <TableContainer
       component={Paper}
       sx={{
-        background: "#34495E",
+        background: "transparent",
         height: "100%",
         display: "flex",
         alignItems: "center",
+        boxShadow: "none",
       }}
     >
       <Table size="small" aria-label="a dense table">
         <TableBody>
           {rows.map((row) => (
-            <TableRow
-              key={row.key}
-              //   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              sx={{
-                // border: 0,
-                borderColor: " lighten(#34495E, 10%)",
-              }}
-            >
+            <TableRow key={row.key}>
               <TableCell
                 component="th"
                 scope="row"
