@@ -65,7 +65,7 @@ const SayHi = ({ myClass }) => {
 
   return (
     <Box
-      className={myClass}
+      className={myClass + " sayhi"}
       height="100vh"
       position="relative"
       display="flex"
@@ -184,7 +184,12 @@ const SayHi = ({ myClass }) => {
               minRows={5}
               value={data.message}
               placeholder="Type Your Message"
-              style={{ width: "auto", height: "auto", resize: "none" }}
+              style={{
+                width: "auto",
+                height: "auto",
+                resize: "none",
+                borderRadius: "3px",
+              }}
               onChange={handleMessage}
               required
             />

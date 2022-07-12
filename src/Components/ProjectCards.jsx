@@ -29,21 +29,25 @@ export default function ProjectCards({ index, details, image, name }) {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          padding: { xs: "2px 4px", sm: "0 10px" },
+          padding: {
+            xs: "2px 4px",
+            sm: index % 2 === 0 ? "0 10px 0 5px" : "0 5px 0 10px",
+          },
         }}
       >
         <CardMedia
           component="img"
           sx={{
-            borderRight: "1px solid",
             height: "95%",
             minWidth: "320px",
             borderTopLeftRadius: index % 2 === 0 ? "4px" : "0px",
             borderBottomLeftRadius: index % 2 === 0 ? "4px" : "0px",
             borderTopRightRadius: index % 2 !== 0 ? "4px" : "0px",
             borderBottomRightRadius: index % 2 !== 0 ? "4px" : "0px",
+            boxShadow:
+              "rgb(255 255 255 / 20%) 0px 0px 0px 1px inset, rgb(0 255 255 / 90%) 0px 0px 0px 1px",
           }}
-          image={`${image}.png`}
+          image={`${image}.gif`}
           alt={`${name} album cover`}
         />
       </Box>
@@ -59,6 +63,7 @@ export default function ProjectCards({ index, details, image, name }) {
           }}
         >
           <Typography
+            className="project-header"
             component="div"
             variant="h5"
             sx={{

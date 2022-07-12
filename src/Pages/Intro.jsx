@@ -40,6 +40,7 @@ const Intro = () => {
           Hi,
         </Typography>
         <Typography
+          className="intro-name"
           textAlign="left"
           variant="h2"
           sx={{ fontSize: { xs: "1.75rem", md: "2.25rem", lg: "3.25rem" } }}

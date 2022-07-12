@@ -124,11 +124,15 @@ button:disabled {
 }
 
 @media (max-height: 480px) {
+  #intro {
+    overflow: hidden;
+    padding-top: 12%;
+  }
   #SayHi {
     height: 100%;
   }
-  #intro {
-    height: auto;
+  .intro-name {
+    font-size: 1.4rem !important;
   }
   .input2 {
     margin-top: 10px !important;
@@ -157,20 +161,13 @@ button:disabled {
   .title {
     font-size: 2rem !important;
   }
-  td {
-    padding-top: 2px !important;
-    padding-bottom: 2px !important;
-  }
-  th {
-    padding-top: 2px !important;
-    padding-bottom: 2px !important;
-  }
   .about-me-para {
     font-size: 1.25rem !important;
-    line-height: 1.75rem !important;
+    line-height: 1.1 !important;
   }
   #Skills {
     height: auto;
+    padding-bottom: 5%;
   }
   .Skill-wrapper {
     min-height: 100vh;
@@ -196,9 +193,6 @@ button:disabled {
   .project-content {
     padding: 0 !important;
     padding-right: 10px !important;
-  }
-  #intro {
-    overflow: hidden;
   }
   .project-btn {
     justify-content: end !important;

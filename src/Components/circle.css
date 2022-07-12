@@ -121,7 +121,35 @@
   }
 }
 @media (max-height: 480px) {
-  .project-details {
+  blockquote {
     line-height: 1 !important;
+  }
+  cite {
+    font-size: 0.9rem !important;
+  }
+  .description h4 {
+    font-size: 1.28rem;
+  }
+  .slider .item {
+    width: 52px;
+    height: 52px;
+  }
+  .slider .active {
+    width: 65px;
+    height: 65px;
+  }
+  .project-details {
+    line-height: 0.9 !important;
+    font-size: 0.9rem !important;
+  }
+  .project-header {
+    font-size: 1.25rem !important;
+  }
+  .project-card-media img {
+    height: 98%;
+    border-top-left-radius: 4px !important;
+    border-bottom-left-radius: 4px !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
   }
 }

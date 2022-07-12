@@ -18,14 +18,14 @@ const projectDetails = [
     shortDetail: "",
     details:
       "My Portfolio is built using ReactJs and MUI5. Messaging is done using mailjet API which sends the message back to my email id. To secure my mailjet secret keys from client-side  NodeJs Server as a relay is being used.There is also a restriction on the number of messages that can be sent from one IP Address.",
-    pic: "test1",
+    pic: "portfolio",
   },
   {
     name: "29 Playing Card Game",
     shortDetail: "",
     details:
       "A Full-fledge online multiplayer game Build using MERN Stack. Players can play in groups of two or four. Single-players can play it offline with the bot. It is a PWA and can be played without an internet connection.",
-    pic: "test1",
+    pic: "29",
   },
 ];
 

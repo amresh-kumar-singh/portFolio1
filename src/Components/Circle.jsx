@@ -19,6 +19,10 @@ const Circle = () => {
     };
   };
   const Resize = () => {
+    if (window.innerHeight < 480) {
+      setPos(150);
+      return;
+    }
     if (window.innerWidth < 1024) {
       setPos(225);
     }
@@ -64,9 +68,7 @@ const Circle = () => {
     return () => window.removeEventListener("resize", optimaizedFunction);
     // eslint-disable-next-line
   }, []);
-  // useEffect(() => {
-  //   if (rotate === -360) ref.current.style.transform = "rotate(0deg)";
-  // }, [rotate]);
+
   return (
     <div className="wrapper">
       <div
@@ -131,7 +133,7 @@ const Circle = () => {
             letterSpacing: "0.06",
             position: "relative",
             lineHeight: { xs: "1.1", sm: "1.25", md: "1.5" },
-            fontSize: { xs: "0.90rem", sm: "1rem", md: "1.1rem" },
+            fontSize: { xs: "0.90rem", sm: "1rem", md: "1.15rem" },
             "&:after": {
               content: "'\\201C'",
               position: "absolute",
