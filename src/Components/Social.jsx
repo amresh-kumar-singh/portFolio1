@@ -27,7 +27,11 @@ const Social = () => {
         </a>
       </li>
       <li>
-        <a href="https://github.io" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://github.com/amresh-kumar-singh"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <i className="fa fa-github" aria-hidden="true"></i>
         </a>
       </li>

@@ -3,14 +3,14 @@ const projectDetails = [
     name: "URL Shortner",
     shortDetail: "Full Stack MERN SPA",
     details:
-      "URL Shortner is a full-fledged URL Shortner that generates a unique Base 58 Short URL. NodeJs server continuously checks if a URL is not used for a long time then it removes it from the Mongo database. Users can save their URLs by logging in. Users also have a limit on the number of URLs they can shorten in a specific period of time. ",
+      "URL Shortner generates a unique Base 58 Short URL. NodeJs server continuously checks if a URL is not used for a long time then it removes it from the Mongo database. Users can save their URLs by logging in. Users also have a limit on the number of URLs they can shorten in a specific period of time. ",
     pic: "test1",
   },
   {
     name: "Crypto Tracker",
     shortDetail: "React js app",
     details:
-      "This project I did by seeing a youtube tutorial and the channel name is Roadside coder. Here I have implemented React Router 6 and MUI 5.",
+      "Crypto tracker tracks the current price of famous cryptocurrencies. This project I did by seeing a youtube tutorial and the channel name is Roadside coder. Here I have implemented React Router 6 and MUI 5.",
     pic: "test1",
   },
   {

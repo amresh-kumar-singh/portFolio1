@@ -5,17 +5,24 @@ import ProjectCards from "../Components/ProjectCards";
 
 const Projects = ({ projectSlice, myClass }) => {
   return (
-    <Box className={myClass} height="100vh" position="relative">
+    <Box
+      className={myClass}
+      height={{ xs: "auto", sm: "100vh" }}
+      position="relative"
+    >
       <Typography className="title" variant="h2" sx={{ flex: 1 }}>
         Projects
       </Typography>
       <MyContainer
         maxWidth="md"
+        // className="project-page"
         id="Projects"
         sx={{
           zIndex: "2",
           flexDirection: "column",
           justifyContent: "center",
+          height: { xs: "auto", sm: "inherit" },
+          paddingTop: { xs: "10%", sm: "inherit" },
         }}
       >
         {projectSlice.map((item, index) => {

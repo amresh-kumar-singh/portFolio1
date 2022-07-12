@@ -185,4 +185,22 @@ button:disabled {
   .cardSkill div {
     padding-top: 0px !important;
   }
+  .project-card {
+    height: 50% !important;
+    margin: 2px 0 !important;
+    flex-direction: row !important;
+  }
+  .project-card-media {
+    padding-left: 2px !important;
+  }
+  .project-content {
+    padding: 0 !important;
+    padding-right: 10px !important;
+  }
+  #intro {
+    overflow: hidden;
+  }
+  .project-btn {
+    justify-content: end !important;
+  }
 }

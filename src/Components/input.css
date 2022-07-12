@@ -1,8 +1,8 @@
 .gate {
   display: inline-block;
   width: inherit;
-  width: stretch;
   width: -moz-available;
+  width: stretch;
   padding: 10px 0 10px 15px;
   font-family: "Open Sans", sans;
   font-weight: 400;
