@@ -79,10 +79,14 @@ const Navbar = () => {
                 "& .MuiPaper-root": {
                   width: "100vw !important",
                   height: "100vh !important",
-                  background: "rgba(0, 140, 230, 0.8)",
+                  background: {
+                    xs: "rgba(0, 140, 230, 0.8)",
+                    sm: "rgba(236, 135, 192, 0.8)",
+                  },
                   position: "relative",
                   display: "flex",
                   alignItems: "center",
+                  borderRadius: "16px",
                 },
                 "& .MuiList-root": {
                   flexDirection: "column",

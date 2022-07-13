@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&text=AmreshKua&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
@@ -122,7 +122,11 @@ button:disabled {
     margin-top: 8% !important;
   }
 }
-
+@media (max-width: 781px) {
+  .about-me-para {
+    line-height: 1.25 !important;
+  }
+}
 @media (max-height: 480px) {
   #intro {
     overflow: hidden;

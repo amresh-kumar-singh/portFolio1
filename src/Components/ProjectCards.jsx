@@ -68,7 +68,7 @@ export default function ProjectCards({ index, details, image, name }) {
             variant="h5"
             sx={{
               fontFamily: "'EB Garamond', serif",
-              fontWeight: 500,
+              fontWeight: 600,
               fontStyle: "italic",
             }}
           >

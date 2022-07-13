@@ -53,9 +53,10 @@ const About = ({ myClass }) => {
             sx={{
               padding: "20px 40px",
               fontSize: { sm: "1.5rem", xs: "1.25rem", textAlign: "justify" },
-              lineHeight: { sm: "2rem", xs: "1.75rem" },
+              lineHeight: { sm: "1.5", xs: "1.75rem" },
               // paddingTop: { xs: "12%", sm: "0" },
               paddingRight: "60px",
+              fontFamily: "'Montserrat', sans-serif",
             }}
           >
             Hi, I am Amresh Kumar, a javascript developer. I can work on

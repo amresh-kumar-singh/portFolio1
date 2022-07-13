@@ -37,11 +37,11 @@ export default function MyCard({ logo, header, content, setHover, hover }) {
         </Typography>
         <Typography
           variant="body2"
-          color="text.secondary"
           sx={{
             fontSize: "1.124rem",
             lineHeight: "1.75rem",
             textAlign: "justify",
+            color: hover ? "rgba(0,0,0,1)" : "rgba(0,0,0,0.8)",
           }}
         >
           {content}

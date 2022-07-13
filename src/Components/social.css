@@ -158,16 +158,13 @@ ul li:hover:nth-child(4) a:after {
 }
 
 @media screen and (max-width: 410px) {
-  /* .social {
-    flex-wrap: nowrap;
-  } */
   td {
-    padding: 4px 0px !important;
+    padding: 1px 0px !important;
     font-size: 1rem !important;
     letter-spacing: 0 !important;
   }
   th {
-    padding: 4px 0px !important;
+    padding: 1px 0px !important;
     font-size: 0.9rem !important;
   }
   .mq410 {
