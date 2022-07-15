@@ -13,11 +13,13 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "@mui/material/Link";
 import CloseIcon from "@mui/icons-material/Close";
-
+import axiosInstance from "../config/axiosInstance";
+import MyAlert from "./MyAlert";
 const pages = ["About Me", "Skills", "Projects", "Say Hi"];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [error, setError] = React.useState(false);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -26,11 +28,24 @@ const Navbar = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
+  const handleDownload = async () => {
+    try {
+      const res = await axiosInstance.get("/resume", { responseType: "blob" });
+      const url = window.URL.createObjectURL(new Blob([res.data]));
+      const link = window.document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "AmreshResume.pdf");
+      link.click();
+    } catch (err) {
+      setError(err?.response?.statusText || err.message);
+      console.log(err?.response?.statusText);
+    }
+  };
   return (
     <AppBar position="fixed" sx={{ background: "transparent", boxShadow: "0" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          {error && <MyAlert error={error} setError={setError} />}
           <Typography
             variant="h6"
             noWrap
@@ -196,8 +211,9 @@ const Navbar = () => {
                 variant="outlined"
                 sx={{ color: "#a239ca" }}
                 startIcon={<DownloadTwoToneIcon />}
-                href={process.env.PUBLIC_URL + "/AmreshResume.pdf"}
+                // href={process.env.REACT_APP_BASE_URL + "/resume"}
                 download
+                onClick={handleDownload}
               >
                 Resume
               </Button>

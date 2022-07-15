@@ -1,17 +1,19 @@
-import {
-  Stack,
-  Typography,
-  Box,
-  TextareaAutosize,
-  Button,
-  Card,
-  CardContent,
-  CardActions,
-} from "@mui/material";
-import { useEffect, useState } from "react";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import TextareaAutosize from "@mui/material/TextareaAutosize";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
+
+import React, { useEffect, useState } from "react";
 import MyContainer from "../Components/MyContainer";
 import Input from "../Components/Input";
 import "../Components/input.css";
+import axiosInstance from "../config/axiosInstance";
+import MyAlert from "../Components/MyAlert";
+
 const initialData = {
   name: "",
   phone: "",
@@ -30,17 +32,27 @@ function ValidateEmail(mail) {
 const SayHi = ({ myClass }) => {
   const [data, setData] = useState(initialData);
   const [error, setError] = useState("");
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleName = (e) => {
-    setData({ ...data, name: e.target.value });
+    setError("");
+    const temp = e.target.value.replace(
+      /\w\S*/g,
+      (word) => word[0].toUpperCase() + word.substr(1)
+    );
+    setData({ ...data, name: temp });
   };
   const handleEmail = (e) => {
+    setError("");
     setData({ ...data, email: e.target.value });
   };
   const handlePhone = (e) => {
+    setError("");
     setData({ ...data, phone: e.target.value });
   };
   const handleMessage = (e) => {
+    setError("");
     if (e.target.value.length > 250) {
       setError("Max Message length is 250 Characters only");
       return;
@@ -48,19 +60,33 @@ const SayHi = ({ myClass }) => {
     setData({ ...data, message: e.target.value });
   };
   const handleCompany = (e) => {
+    setError("");
     setData({ ...data, company: e.target.value });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    setError("");
     if (!ValidateEmail(data.email)) {
       setError("Enter Valid Email Please...");
       return;
     }
-    console.log({ ...data });
-    setData(initialData);
+    try {
+      setLoading(true);
+      const res = await axiosInstance.post(`/message`, {
+        data: data,
+      });
+      if (res.status === 204) {
+        setOpen(true);
+        setData(initialData);
+      }
+    } catch (error) {
+      setError(error?.response?.data || error.message);
+    } finally {
+      setLoading(false);
+    }
   };
   useEffect(() => {
-    console.log(error);
+    error && setOpen(true);
   }, [error]);
 
   return (
@@ -71,6 +97,7 @@ const SayHi = ({ myClass }) => {
       display="flex"
       alignItems="center"
     >
+      {open && <MyAlert error={error} setOpen={setOpen} open={open} />}
       <Typography className="title" variant="h2" sx={{ flex: 1 }}>
         Say Hi
       </Typography>
@@ -204,7 +231,11 @@ const SayHi = ({ myClass }) => {
             onClick={handleSubmit}
             disabled={!data.message || !data.email || !data.name}
           >
-            {!data.message || !data.email || !data.name ? "Disabled" : "Submit"}
+            {loading || !data.message || !data.email || !data.name || error
+              ? loading
+                ? "Sending Message.."
+                : "Disabled"
+              : "Submit"}
           </Button>
         </Stack>
       </MyContainer>
