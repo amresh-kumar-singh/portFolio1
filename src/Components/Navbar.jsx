@@ -15,12 +15,13 @@ import Link from "@mui/material/Link";
 import CloseIcon from "@mui/icons-material/Close";
 import axiosInstance from "../config/axiosInstance";
 import MyAlert from "./MyAlert";
+import { CircularProgress } from "@mui/material";
 const pages = ["About Me", "Skills", "Projects", "Say Hi"];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [error, setError] = React.useState(false);
-
+  const [loading, setLoading] = React.useState(false);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -29,7 +30,11 @@ const Navbar = () => {
     setAnchorElNav(null);
   };
   const handleDownload = async () => {
+    if (loading) {
+      return;
+    }
     try {
+      setLoading(true);
       const res = await axiosInstance.get("/resume", { responseType: "blob" });
       const url = window.URL.createObjectURL(new Blob([res.data]));
       const link = window.document.createElement("a");
@@ -38,7 +43,8 @@ const Navbar = () => {
       link.click();
     } catch (err) {
       setError(err?.response?.statusText || err.message);
-      console.log(err?.response?.statusText);
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -209,13 +215,24 @@ const Navbar = () => {
             <Tooltip title="Download Resume">
               <Button
                 variant="outlined"
-                sx={{ color: "#a239ca" }}
-                startIcon={<DownloadTwoToneIcon />}
+                sx={{
+                  color: "#a239ca",
+                  cursor: loading ? "not-allowed" : "pointer",
+                }}
+                startIcon={!loading && <DownloadTwoToneIcon />}
                 // href={process.env.REACT_APP_BASE_URL + "/resume"}
                 download
                 onClick={handleDownload}
               >
-                Resume
+                {loading ? (
+                  <CircularProgress
+                    color="secondary"
+                    size="1.4rem"
+                    sx={{ padding: "1px 30px" }}
+                  />
+                ) : (
+                  "Resume"
+                )}
               </Button>
             </Tooltip>
           </Box>

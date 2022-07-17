@@ -1,5 +1,11 @@
 import "./social.css";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebookF,
+  faGithub,
+  faGooglePlusG,
+  faLinkedinIn,
+} from "@fortawesome/free-brands-svg-icons";
 const Social = () => {
   return (
     <ul className="social">
@@ -9,7 +15,7 @@ const Social = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <i className="fa fa-facebook" aria-hidden="true"></i>
+          <FontAwesomeIcon className="fa" icon={faFacebookF} />
         </a>
       </li>
       <li>
@@ -18,12 +24,12 @@ const Social = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <i className="fa fa-linkedin"></i>
+          <FontAwesomeIcon className="fa" icon={faLinkedinIn} />
         </a>
       </li>
       <li>
         <a href="https://google.com" target="_blank" rel="noopener noreferrer">
-          <i className="fa fa-google-plus" aria-hidden="true"></i>
+          <FontAwesomeIcon className="fa" icon={faGooglePlusG} />
         </a>
       </li>
       <li>
@@ -32,7 +38,7 @@ const Social = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <i className="fa fa-github" aria-hidden="true"></i>
+          <FontAwesomeIcon className="fa" icon={faGithub} />
         </a>
       </li>
     </ul>
