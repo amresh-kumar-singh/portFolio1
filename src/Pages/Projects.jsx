@@ -9,6 +9,7 @@ const Projects = ({ projectSlice, myClass }) => {
       className={myClass}
       height={{ xs: "auto", sm: "100vh" }}
       position="relative"
+      sx={{ scrollSnapAlign: { xs: "none", md: "start" } }}
     >
       <Typography className="title" variant="h2" sx={{ flex: 1 }}>
         Projects
@@ -33,6 +34,8 @@ const Projects = ({ projectSlice, myClass }) => {
               details={item.details}
               image={item.pic}
               name={item.name}
+              demo={item.demo}
+              repo={item.repo}
             />
           );
         })}

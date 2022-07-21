@@ -4,7 +4,7 @@ import AboutTable from "../Components/AboutTable";
 import MyContainer from "../Components/MyContainer";
 import Social from "../Components/Social";
 
-const About = ({ myClass }) => {
+const About = ({ myClass, setAlert }) => {
   return (
     <Box
       className={myClass}
@@ -14,6 +14,7 @@ const About = ({ myClass }) => {
       alignItems={{ xs: "end", sm: "center" }}
       justifyContent="center"
       id="AboutMe"
+      sx={{ scrollSnapAlign: { xs: "none", md: "start" } }}
     >
       <Typography className="title" variant="h2" sx={{ flex: 1 }}>
         About Me
@@ -59,10 +60,10 @@ const About = ({ myClass }) => {
               fontFamily: "'Montserrat', sans-serif",
             }}
           >
-            Hi, I am Amresh Kumar, a javascript developer. I can work on
-            technologies like HTML, CSS, Javascript, NodeJs, React Js, MongoDB,
-            etc. A B.E. graduate in C.S.E. Currently living in Banglore and I am
-            from Bihar.
+            I'm a JavaScript developer. I am capable of working with several
+            technologies, including HTML, CSS, JavaScript, NodeJs, React Js,
+            MongoDB, etc. A B.E graduate in C.S.E. I'm from Bihar and I
+            currently call Bengaluru home.
           </Typography>
         </Box>
 
@@ -85,7 +86,7 @@ const About = ({ myClass }) => {
             position="relative"
             zIndex="5"
           >
-            <Social />
+            <Social setAlert={setAlert} />
           </Box>
           <Box
             className="mq410"

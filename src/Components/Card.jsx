@@ -22,6 +22,7 @@ export default function MyCard({ logo, header, content, setHover, hover }) {
     >
       <CardMedia
         component="img"
+        alt={header}
         height="100"
         image={logo}
         sx={{ objectFit: "contain", border: "50%" }}

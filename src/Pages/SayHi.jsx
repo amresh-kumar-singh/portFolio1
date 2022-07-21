@@ -12,7 +12,6 @@ import MyContainer from "../Components/MyContainer";
 import Input from "../Components/Input";
 import "../Components/input.css";
 import axiosInstance from "../config/axiosInstance";
-import MyAlert from "../Components/MyAlert";
 
 const initialData = {
   name: "",
@@ -29,10 +28,9 @@ function ValidateEmail(mail) {
   return false;
 }
 
-const SayHi = ({ myClass }) => {
+const SayHi = ({ myClass, setAlert }) => {
   const [data, setData] = useState(initialData);
   const [error, setError] = useState("");
-  const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleName = (e) => {
@@ -76,7 +74,11 @@ const SayHi = ({ myClass }) => {
         data: data,
       });
       if (res.status === 204) {
-        setOpen(true);
+        setAlert({
+          open: true,
+          type: "success",
+          message: "Your Message has been Sent.",
+        });
         setData(initialData);
       }
     } catch (error) {
@@ -86,7 +88,8 @@ const SayHi = ({ myClass }) => {
     }
   };
   useEffect(() => {
-    error && setOpen(true);
+    error && setAlert({ open: true, message: error, type: "error" });
+    // eslint-disable-next-line
   }, [error]);
 
   return (
@@ -96,8 +99,8 @@ const SayHi = ({ myClass }) => {
       position="relative"
       display="flex"
       alignItems="center"
+      sx={{ scrollSnapAlign: { xs: "none", md: "start" } }}
     >
-      {open && <MyAlert error={error} setOpen={setOpen} open={open} />}
       <Typography className="title" variant="h2" sx={{ flex: 1 }}>
         Say Hi
       </Typography>

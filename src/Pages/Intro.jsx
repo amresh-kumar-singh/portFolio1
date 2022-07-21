@@ -14,6 +14,7 @@ const Intro = () => {
         alignItems: "center",
         height: "100vh",
         flexDirection: { xs: "column", sm: "row" },
+        scrollSnapAlign: { xs: "none", md: "start" },
       }}
     >
       <Box

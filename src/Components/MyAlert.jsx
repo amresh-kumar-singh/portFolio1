@@ -5,27 +5,22 @@ const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-const MyAlert = ({ error, setOpen, open, setError }) => {
+const MyAlert = ({ alert, setAlert }) => {
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
     }
-    setOpen && setOpen(false);
-    setError && setError(false);
+    setAlert({ open: false });
   };
   return (
     <Snackbar
-      open={open || !!error}
+      open={alert.open}
       autoHideDuration={6000}
       onClose={handleClose}
       anchorOrigin={{ vertical: "top", horizontal: "right" }}
     >
-      <Alert
-        onClose={handleClose}
-        severity={error ? "error" : "success"}
-        sx={{ width: "100%" }}
-      >
-        {error || "Your message has been sent!"}
+      <Alert onClose={handleClose} severity={alert.type} sx={{ width: "100%" }}>
+        {alert.message}
       </Alert>
     </Snackbar>
   );

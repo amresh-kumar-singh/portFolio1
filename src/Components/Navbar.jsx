@@ -14,13 +14,11 @@ import MenuItem from "@mui/material/MenuItem";
 import Link from "@mui/material/Link";
 import CloseIcon from "@mui/icons-material/Close";
 import axiosInstance from "../config/axiosInstance";
-import MyAlert from "./MyAlert";
-import { CircularProgress } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 const pages = ["About Me", "Skills", "Projects", "Say Hi"];
 
-const Navbar = () => {
+const Navbar = ({ setAlert }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [error, setError] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -42,7 +40,11 @@ const Navbar = () => {
       link.setAttribute("download", "AmreshResume.pdf");
       link.click();
     } catch (err) {
-      setError(err?.response?.statusText || err.message);
+      setAlert({
+        open: true,
+        type: "error",
+        message: err?.response?.statusText || err.message,
+      });
     } finally {
       setLoading(false);
     }
@@ -51,7 +53,6 @@ const Navbar = () => {
     <AppBar position="fixed" sx={{ background: "transparent", boxShadow: "0" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {error && <MyAlert error={error} setError={setError} />}
           <Typography
             variant="h6"
             noWrap

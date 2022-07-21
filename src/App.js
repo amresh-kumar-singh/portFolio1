@@ -7,11 +7,17 @@ import Projects from "./Pages/Projects";
 import Skills from "./Pages/Skills";
 import projectDetails from "./Data/projectDetails";
 import { useEffect, useState } from "react";
-import { IconButton } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
 import ArrowCircleUpOutlinedIcon from "@mui/icons-material/ArrowCircleUpOutlined";
+import MyAlert from "./Components/MyAlert";
 
 function App() {
   const [visibility, setVisibility] = useState(false);
+  const [alert, setAlert] = useState({
+    open: false,
+    message: "",
+    type: "info",
+  });
 
   function moveToTop() {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -30,13 +36,14 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <Navbar />
+      <Navbar setAlert={setAlert} />
+      <MyAlert alert={alert} setAlert={setAlert} />
       <Intro />
-      <About myClass="next" />
+      <About myClass="next" setAlert={setAlert} />
       <Skills myClass="box" />
       <Projects myClass="next" projectSlice={projectDetails.slice(0, 2)} />
       <Projects myClass="box" projectSlice={projectDetails.slice(2)} />
-      <SayHi myClass="next" />
+      <SayHi myClass="next" setAlert={setAlert} />
       {visibility && (
         <IconButton
           className="scroll-top"

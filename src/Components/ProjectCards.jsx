@@ -6,7 +6,14 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
-export default function ProjectCards({ index, details, image, name }) {
+export default function ProjectCards({
+  index,
+  details,
+  image,
+  name,
+  repo,
+  demo,
+}) {
   return (
     <Card
       className="project-card"
@@ -37,6 +44,7 @@ export default function ProjectCards({ index, details, image, name }) {
       >
         <CardMedia
           component="img"
+          loading="lazy"
           sx={{
             height: "95%",
             minWidth: "320px",
@@ -97,14 +105,22 @@ export default function ProjectCards({ index, details, image, name }) {
         >
           <Button
             variant="contained"
+            color="warning"
+            size="small"
+            href={repo}
+            target="_blank"
             sx={{ mr: 2 }}
+          >
+            Repo
+          </Button>
+          <Button
+            variant="contained"
             color="secondary"
             size="small"
+            href={demo}
+            target={name === "My Portfolio" ? "" : "_blank"}
           >
-            Demo
-          </Button>
-          <Button variant="contained" color="warning" size="small">
-            Repo
+            Site
           </Button>
         </Box>
       </Box>

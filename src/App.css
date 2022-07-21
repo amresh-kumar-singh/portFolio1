@@ -12,6 +12,7 @@ html {
   text-align: center;
   background-image: linear-gradient(to right, #434343 0%, black 100%);
   min-height: 100vh;
+  scroll-behavior: smooth;
 }
 .title {
   position: absolute;
@@ -102,6 +103,14 @@ button:disabled {
   }
 }
 
+@media (min-width: 900px) {
+  .App {
+    height: 100vh;
+    width: 100vw;
+    overflow-y: scroll;
+    scroll-snap-type: y proximity;
+  }
+}
 @media (max-width: 900px) {
   .title {
     font-size: 2.75rem !important;
